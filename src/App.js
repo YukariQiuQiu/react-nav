@@ -10,29 +10,38 @@ import Page8 from "./pages/page8.jsx";
 import Page9 from "./pages/page9.jsx";
 import Page10 from "./pages/page10.jsx";
 import Nav from "./nav/nav1.jsx";
+
+import Menu from './menu/menu.jsx'
+
 import "./App.css";
 import { Router, Route, Switch } from "react-router-dom";
 import { createHashHistory } from "history";
 
-export const navConfig = [
-  {
-    name: "page1",
-    path: "/page1",
-    id:'1',
-    child: [{ name: "page4", path: "/page4", id:'4' },{ name: "page8", path: "/page8", id:'8' }]
-  },
-  {
-    name: "page2",
-    path: "/page2",
-    id:'2',
-    child: [{ name: "page5", path: "/page5", id:'5',child: [{ name: "page9", path: "/page9", id:'9' },{ name: "page10", path: "/page10", id:'10' }] },{ name: "page6", path: "/page6", id:'6' },{ name: "page7", path: "/page7", id:'7' }]
-  },
-  {
-    name: "page3",
-    path: "/page3",
-    id:'3'
-  }
-];
+const navConfig = {
+  list:[
+          {
+            name: "page1",
+            path: "/page1",
+            id:'1',
+            child: [{ name: "page4", path: "/page4", id:'4' },{ name: "page8", path: "/page8", id:'8' }]
+          },
+          {
+            name: "page2",
+            path: "/page2",
+            id:'2',
+            child: [{ name: "page5", path: "/page5", id:'5',child: [{ name: "page9", path: "/page9", id:'9' },{ name: "page10", path: "/page10", id:'10' }] },{ name: "page6", path: "/page6", id:'6' },{ name: "page7", path: "/page7", id:'7' }]
+          },
+          {
+            name: "page3",
+            path: "/page3",
+            id:'3'
+          }
+        ],
+  styles:{
+    width:256,
+    height: '100vh',
+  }      
+}
 
 function App() {
 
@@ -42,7 +51,8 @@ function App() {
   return (
     <Router history={history}>
       <div className="App">
-        <Nav list={navConfig}></Nav>
+        {/* <Nav list={navConfig}></Nav> */}
+        <Menu {...navConfig}></Menu>
         <Switch>
           <Route path="/" exact component={Page1}></Route>
           <Route path="/page1" exact component={Page1}></Route>
