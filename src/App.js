@@ -9,9 +9,9 @@ import Page7 from "./pages/page7.jsx";
 import Page8 from "./pages/page8.jsx";
 import Page9 from "./pages/page9.jsx";
 import Page10 from "./pages/page10.jsx";
-import Nav from "./nav/nav1.jsx";
 
-import Menu from './menu/menu.jsx'
+// import Menu from './menu/menu.jsx'
+import MenuRoute from './menu/menuRoute.jsx';
 
 import "./App.css";
 import { Router, Route, Switch } from "react-router-dom";
@@ -52,7 +52,8 @@ function App() {
     <Router history={history}>
       <div className="App">
         {/* <Nav list={navConfig}></Nav> */}
-        <Menu {...navConfig}></Menu>
+        {/* <Menu {...navConfig}></Menu> */}
+        <MenuRoute {...navConfig}></MenuRoute>
         <Switch>
           <Route path="/" exact component={Page1}></Route>
           <Route path="/page1" exact component={Page1}></Route>

@@ -1,51 +1,80 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
+const { SubMenu } = Menu;
 
-const menuSub = () => (
+let LinkCompent = null;
+
+const menuSub = ({ id, name, child,path },showList) => (
     <SubMenu
-        key={this.props.id}
-        title={<span>{this.props.name}</span>}
-        {...props}
+        key={id}
+        title={<span>{name}</span>}
+        onTitleClick={() => {
+            if(showList) showList(id, path);
+        }}
     >
         {child &&
-        child.map((item, i) => {
-            // return item.child && item.child.length > 0 ? (<MenuSub {...item} ></MenuSub>) : (<MenuItem {...item} ></MenuItem>);
-            return (<div key={i}>123</div>);
-        })}
+            child.map((item, i) => {
+                return item.child && item.child.length > 0 ? (menuSub({ ...item })) : (menuItem({ ...item }));
+            })}
     </SubMenu>
 );
 
-const menuItem = () => (
-    <Menu.Item key={id}>
+const menuItem = ({ id, name, path }) => {
+    return (LinkCompent ? (<Menu.Item key={id}>
+        <LinkCompent to={path}>
+            <span>{name}</span>
+        </LinkCompent>
+    </Menu.Item>) : (<Menu.Item key={id}>
         <span>{name}</span>
-    </Menu.Item>
-)
+    </Menu.Item>));
+}
 
-class NavMenu extends React.Component {
-    constructor(props){
+export default class NavMenu extends React.Component {
+    constructor(props) {
         super(props)
         console.log(this.props)
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log(this.props)
     }
-    render(){
-        const {list} = this.props
-        return(
+    render() {
+        const { list, Link } = this.props
+        LinkCompent = Link;
+        console.log(this.props)
+        if(this.props.openArr && this.props.selectArr){
+            let{openArr,selectArr,showList} = this.props;
+            return (
+                <Menu
+                    style={{
+                        width: 256,
+                        height: '100vh',
+                    }}
+                    openKeys={openArr}
+                    selectedKeys={selectArr}
+                    theme="dark"
+                    mode="inline"
+                >
+                    {list.map((elem, i) => {
+                        return elem.child && elem.child.length > 0 ? menuSub({ ...elem },showList) : menuItem({ ...elem });
+                    })}
+                </Menu>
+            );
+        };
+        return (
             <Menu
                 style={{
-                width: 256,
-                height: '100vh',
+                    width: 256,
+                    height: '100vh',
                 }}
                 theme="dark"
                 mode="inline"
             >
-                {list.map((elem,i) => {
-                    return elem.child && elem.child.length > 0 ? menuSub({...elem}) : menuItem({...elem});
+                {list.map((elem, i) => {
+                    return elem.child && elem.child.length > 0 ? menuSub({ ...elem }) : menuItem({ ...elem });
                 })}
             </Menu>
         );
     };
 }
-export default NavMenu
+
