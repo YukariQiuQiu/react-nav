@@ -10,7 +10,7 @@ import Page8 from "./pages/page8.jsx";
 import Page9 from "./pages/page9.jsx";
 import Page10 from "./pages/page10.jsx";
 
-// import Menu from './menu/menu.jsx'
+import Menu from './menu/menu.jsx'
 import MenuRoute from './menu/menuRoute.jsx';
 
 import "./App.css";
@@ -40,7 +40,9 @@ const navConfig = {
   styles:{
     width:256,
     height: '100vh',
-  }      
+  },
+  theme:'dark',
+  mode:'inline'      
 }
 
 function App() {
@@ -51,7 +53,6 @@ function App() {
   return (
     <Router history={history}>
       <div className="App">
-        {/* <Nav list={navConfig}></Nav> */}
         {/* <Menu {...navConfig}></Menu> */}
         <MenuRoute {...navConfig}></MenuRoute>
         <Switch>

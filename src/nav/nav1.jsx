@@ -7,19 +7,19 @@ const navConfig = [
   {
     name: "page1",
     path: "/page1",
-    id:'1',
-    child: [{ name: "page4", path: "/page4", id:'4' },{ name: "page8", path: "/page8", id:'8' }]
+    id: '1',
+    child: [{ name: "page4", path: "/page4", id: '4' }, { name: "page8", path: "/page8", id: '8' }]
   },
   {
     name: "page2",
     path: "/page2",
-    id:'2',
-    child: [{ name: "page5", path: "/page5", id:'5',child: [{ name: "page9", path: "/page9", id:'9' },{ name: "page10", path: "/page10", id:'10' }] },{ name: "page6", path: "/page6", id:'6' },{ name: "page7", path: "/page7", id:'7' }]
+    id: '2',
+    child: [{ name: "page5", path: "/page5", id: '5', child: [{ name: "page9", path: "/page9", id: '9' }, { name: "page10", path: "/page10", id: '10' }] }, { name: "page6", path: "/page6", id: '6' }, { name: "page7", path: "/page7", id: '7' }]
   },
   {
     name: "page3",
     path: "/page3",
-    id:'3'
+    id: '3'
   }
 ]
 
@@ -39,9 +39,9 @@ class Nav extends React.Component {
     };
   }
 
-  handleClick = e => {};
+  handleClick = e => { };
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   UNSAFE_componentWillReceiveProps() {
     isfind = false;

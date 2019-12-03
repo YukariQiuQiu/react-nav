@@ -18,7 +18,6 @@ class MenuRoute extends React.Component {
     };
 
     UNSAFE_componentWillReceiveProps() {
-        console.log(this.props)
         isfind = false;
         let path = this.props.history.location.pathname;
         selectArr = [];
@@ -33,7 +32,9 @@ class MenuRoute extends React.Component {
             openKeys: openArr,
         });
     }
-
+    /**
+     * 控制菜单父级菜单打开
+     */
     showList = (key, path) => {
         let arr = JSON.parse(JSON.stringify(this.state.openKeys));
         if (arr.indexOf(key) !== -1) {
@@ -52,7 +53,9 @@ class MenuRoute extends React.Component {
             this.props.history.push(path);
         }
     };
-
+    /**
+     * 定位菜单配置中id方法以及父级id集合
+     */
     searchId = ({ path, list }) => {
         list.forEach(elem => {
             if (isfind) {
@@ -63,11 +66,9 @@ class MenuRoute extends React.Component {
                     selectArr.push(elem.id);
                 } else {
                     openArr.push(elem.id);
-                    // openArr = Array.from(new Set(openArr))
                 }
                 isfind = true;
             } else if (elem.child) {
-                // console.log(elem)
                 openArr.push(elem.id);
                 this.searchId({
                     path,
