@@ -80,7 +80,16 @@ class MenuRoute extends React.Component {
     };
 
     render() {
-        return (<Menu {...this.props} showList={this.showList} searchId={this.searchId} Link={Link} openArr={openArr} selectArr={selectArr}></Menu>)
+        return (
+            <Menu {...{ 
+                ...this.props, 
+                Link, 
+                openArr, 
+                selectArr, 
+                showList: this.showList, 
+            }}
+            ></Menu>
+        )
     }
 }
 
