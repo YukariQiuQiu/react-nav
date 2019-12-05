@@ -50,10 +50,10 @@ export default class NavMenu extends React.Component {
                 width: 256,
                 height: '100vh',
             },
-            theme:theme ? theme : 'dark',
-            mode:mode ? mode : 'inline'
+            theme: theme ? theme : 'dark',
+            mode: mode ? mode : 'inline'
         };
-        if(Link) {
+        if (Link) {
             propsList.openKeys = openArr;
             propsList.selectedKeys = selectArr;
         }
