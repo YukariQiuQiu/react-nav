@@ -29,7 +29,6 @@ const renderMenu = ({ list, Link, showList }) => {
                     key={elem.id}
                     title={<span>{elem.name}</span>}
                     onTitleClick={() => {
-                        console.log(123)
                         if (showList) showList(elem.id, elem.path);
                     }}
                 >
